@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>{% block titulo %}Listado de contacto{% endblock titulo %}</title>
+
+</head>
+<body>
+	{% block cuerpo %}
+	<h1>Template de listado</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>correo</th>
+				<th>Opcion</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for persona in personas %}
+			<tr>
+				<th>{{ persona.nombre }}</th>
+				<th>{{ persona.apellido }}</th>
+				<th>{{ persona.correo }}</th>
+				<th><a href="{% url 'editar_persona' persona.id %}">Editar</a> <a href="{% url 'eliminar_persona' persona.id %}">Eliminar</a></th>
+			</tr>
+			{% endfor %}
+		</tbody>
+
+	</table>
+	{% endblock cuerpo %}
+</body>
+
+</html>
